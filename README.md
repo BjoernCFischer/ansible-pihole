@@ -50,7 +50,7 @@ pihole_dns_servers:
     - role: ansible-pihole
   vars:
     pihole_interface: eth0
-	pihole_dns_servers:
+    pihole_dns_servers:
      - "192.168.0.1"
      - "192.168.0.2"
 ```
