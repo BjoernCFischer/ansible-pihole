@@ -1,6 +1,3 @@
-TODO an neue Rolle anpassen
-!!!!!!!!!!!!!!!!!!!!!!!!!1
-
 # ansible-pihole
 
 This role will install the ad blocker Pi-hole on the node. The role skeleton and test code is based on [hannseman/ansible-raspbian](https://github.com/hannseman/ansible-raspbian) - thanks and kudos to [Hannes Ljungberg](https://github.com/hannseman).
