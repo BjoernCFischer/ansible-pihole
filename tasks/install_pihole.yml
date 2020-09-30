@@ -26,7 +26,7 @@
     mode=0644
   
 - name: Install Pi-Hole
-  shell: "~/install-pihole.sh --unattended"
+  command: ~/install-pihole.sh --unattended
   register: rst_install_pihole
 
 - name: Pi-hole installation output
