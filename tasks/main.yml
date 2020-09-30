@@ -1,0 +1,10 @@
+---
+
+- import_tasks: determine_version.yml
+  tags:
+    - pihole
+
+- import_tasks: install_pihole.yml
+  when: pihole_version.failed
+  tags:
+    - pihole

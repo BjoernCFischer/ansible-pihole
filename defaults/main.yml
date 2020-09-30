@@ -1,0 +1,12 @@
+---
+# Network interface to make Pi-hole listen on
+pihole_interface: eth0
+
+# The Pi's IPv4 and IPv6 addresses
+pihole_ipv4_address: "{{ hostvars[inventory_hostname]['ansible_' + pihole_interface]['ipv4']['address'] }}/24"
+pihole_ipv6_address: "{{ hostvars[inventory_hostname]['ansible_' + pihole_interface]['ipv6'][0]['address'] }}"
+
+# List of DNS servers to use. Each address can be either IPv4 or IPv6
+pihole_dns_servers:
+  - "192.168.0.1"
+  - "192.168.0.2"
