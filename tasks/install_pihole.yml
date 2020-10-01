@@ -13,8 +13,6 @@
   file:
     name="{{ pihole_config_path }}"
     state=directory
-    owner=pihole
-    group=pihole
     mode=0775
 
 - name: Create pihole configuration
