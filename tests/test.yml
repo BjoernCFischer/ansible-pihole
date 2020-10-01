@@ -13,3 +13,5 @@
   roles:
     - ../../
   vars:
+    pihole_ipv4_address: "127.0.0.1/24"
+    pihole_ipv6_address: "::1"
