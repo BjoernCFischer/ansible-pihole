@@ -15,6 +15,10 @@
     state=directory
     mode=0775
 
+- name: Temporary debug output for testing purpose
+  debug:
+    msg: "{{ hostvars[inventory_hostname] }}"
+    
 - name: Create pihole configuration
   template:
     src="setupVars.conf.j2"
@@ -23,13 +27,13 @@
     group=root
     mode=0644
 
-- name: Install Pi-Hole
-  command: ~/install-pihole.sh --unattended
-  register: rst_install_pihole
+# - name: Install Pi-Hole
+  # command: ~/install-pihole.sh --unattended
+  # register: rst_install_pihole
 
-- name: Pi-hole installation output
-  debug:
-    msg: "{{ rst_install_pihole }}"
+# - name: Pi-hole installation output
+  # debug:
+    # msg: "{{ rst_install_pihole }}"
 
 # TODO: set Web password
 # pihole -a -p password
