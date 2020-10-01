@@ -1,7 +1,7 @@
 ---
 - name: Check installed version number
   command: pihole -v
-  ignore_errors: yes
+  ignore_errors: true
   changed_when: false
   register: pihole_version
 

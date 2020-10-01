@@ -2,12 +2,12 @@
 - name: Set common variables
   set_fact:
     pihole_config_path: /etc/pihole
-    
+
 - name: "Download Pi-Hole installer"
   get_url:
-      url: https://install.pi-hole.net
-      dest: ~/install-pihole.sh
-      mode: 0740
+    url: https://install.pi-hole.net
+    dest: ~/install-pihole.sh
+    mode: 0740
 
 - name: Create pihole configuration directory
   file:
@@ -24,7 +24,7 @@
     owner=root
     group=root
     mode=0644
-  
+
 - name: Install Pi-Hole
   command: ~/install-pihole.sh --unattended
   register: rst_install_pihole
@@ -32,8 +32,8 @@
 - name: Pi-hole installation output
   debug:
     msg: "{{ rst_install_pihole }}"
-    
-# TODO: set Web password 
-#pihole -a -p password
+
+# TODO: set Web password
+# pihole -a -p password
 
 # TODO: update pihole regularly
