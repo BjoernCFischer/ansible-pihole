@@ -29,29 +29,29 @@
   
 - name: Install Pi-Hole async
   shell: "/root/install-pihole.sh --unattended > /root/installation.log"
-  async: 3000
-  poll: 0
+  async: 1000
+  poll: 50
   register: install_sleeper
 
-- name: Pause execution 
-  pause:
-    seconds: 540
+# - name: Pause execution 
+  # pause:
+    # seconds: 540
 
-- name: Install Pi-Hole
-  shell: "cat /root/installation.log"
-  register: rst_middle_seconds
+# - name: Install Pi-Hole
+  # shell: "cat /root/installation.log"
+  # register: rst_middle_seconds
 
-- name: Logfile after 9 Minutes
-  debug:
-    msg: "{{ rst_middle_seconds }}"
+# - name: Logfile after 9 Minutes
+  # debug:
+    # msg: "{{ rst_middle_seconds }}"
 
-- name: Wait for installer to finish
-  async_status:
-    jid: "{{ install_sleeper.ansible_job_id }}"
-  register: job_result
-  until: job_result.finished
-  retries: 100
-  delay: 30
+# - name: Wait for installer to finish
+  # async_status:
+    # jid: "{{ install_sleeper.ansible_job_id }}"
+  # register: job_result
+  # until: job_result.finished
+  # retries: 100
+  # delay: 30
   
 # - name: Output of Pi-hole installation
   # debug:
