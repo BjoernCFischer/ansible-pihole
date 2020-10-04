@@ -22,10 +22,6 @@
     owner=root
     group=root
     mode=0644
-
-# - name: Install Pi-Hole
-  # command: /root/install-pihole.sh --unattended
-  # register: rst_install_pihole
   
 - name: Install Pi-Hole async
   command: "/root/install-pihole.sh --unattended"
