@@ -23,11 +23,41 @@
     group=root
     mode=0644
 
-- name: Install Pi-Hole
-  command: /root/install-pihole.sh --unattended
-  register: rst_install_pihole
+# - name: Install Pi-Hole
+  # command: /root/install-pihole.sh --unattended
+  # register: rst_install_pihole
+  
+- name: Install Pi-Hole async
+  shell: "/root/install-pihole.sh --unattended > /root/installation.log"
+  async: 600
+  poll: 0
+  register: install_sleeper
 
-- name: Set Pi-hole admin console password
-  command: "pihole -a -p {{ pihole_admin_console_password }}"
+- name: Pause execution 
+  pause:
+    seconds: 180
+
+- name: Install Pi-Hole
+  shell: "cat /root/installation.log"
+  register: rst_middle_seconds
+
+- name: Logfile after 20 seconds
+  debug:
+    msg: "{{ rst_middle_seconds }}"
+
+- name: Wait for installer to finish
+  async_status:
+    jid: "{{ install_sleeper.ansible_job_id }}"
+  register: job_result
+  until: job_result.finished
+  retries: 100
+  delay: 10
+  
+# - name: Output of Pi-hole installation
+  # debug:
+    # msg: "{{ rst_install_pihole }}"
+        
+# - name: Set Pi-hole admin console password
+  # command: "pihole -a -p {{ pihole_admin_console_password }}"
 
 # TODO: update pihole regularly
