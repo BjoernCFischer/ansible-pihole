@@ -22,13 +22,13 @@
     owner=root
     group=root
     mode=0644
-  
+
 - name: Install Pi-Hole async
   command: "/root/install-pihole.sh --unattended"
-  async: 1000
-  poll: 50
+  async: 1800
+  poll: 60
   register: install_sleeper
-        
+
 - name: Set Pi-hole admin console password
   command: "pihole -a -p {{ pihole_admin_console_password }}"
 
