@@ -1,5 +1,7 @@
 # ansible-pihole
 
+[![Travis (.org)](https://api.travis-ci.com/BjoernCFischer/ansible-pihole.svg?branch=master)](https://travis-ci.com/github/BjoernCFischer/ansible-pihole)
+
 This role will install the ad blocker Pi-hole on the node. The role skeleton and test code is based on [hannseman/ansible-raspbian](https://github.com/hannseman/ansible-raspbian) - thanks and kudos to [Hannes Ljungberg](https://github.com/hannseman).
 
 ### It will:
@@ -40,6 +42,13 @@ pihole_ipv6_address: "{{ hostvars[inventory_hostname]['ansible_' + pihole_interf
 pihole_dns_servers:
   - "192.168.0.1"
   - "192.168.0.2"
+
+# Password for the admin user to access the web console
+pihole_admin_console_password: SomeSecurePassword
+
+# Flag to force Pi-hole installation (even if already installed)
+# Note: if set to true the role is not idempotent anymore
+pihole_force_installation: false
 ```
 
 ## Example Playbook
@@ -53,4 +62,5 @@ pihole_dns_servers:
     pihole_dns_servers:
      - "192.168.0.1"
      - "192.168.0.2"
+    pihole_admin_console_password: ABC123#987ZYX
 ```

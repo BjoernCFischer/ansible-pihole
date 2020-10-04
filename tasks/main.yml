@@ -5,6 +5,6 @@
     - pihole
 
 - import_tasks: install_pihole.yml
-  when: pihole_version.failed
+  when: pihole_version.failed or pihole_force_installation|bool
   tags:
     - pihole

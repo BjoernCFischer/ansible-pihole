@@ -10,3 +10,10 @@ pihole_ipv6_address: "{{ hostvars[inventory_hostname]['ansible_' + pihole_interf
 pihole_dns_servers:
   - "192.168.0.1"
   - "192.168.0.2"
+
+# Password for the admin user to access the web console
+pihole_admin_console_password: SomeSecurePassword
+
+# Flag to force Pi-hole installation (even if already installed)
+# Note: if set to true the role is not idempotent anymore
+pihole_force_installation: false
